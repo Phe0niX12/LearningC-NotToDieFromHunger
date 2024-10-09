@@ -13,15 +13,16 @@ namespace Training.Repository {
             throw new NotImplementedException();
         }
 
+        public async Task<Cow> DeleteWithoutDeleteing(Guid id)
+            => await _context.DeleteWithoutDeleting<Cow>(id);
+
         public async Task<IEnumerable<Cow>> GetAll()
-            => await _context.AllSqlEntitites<Cow>().ToListAsync();
+            => await _context.AllSqlEntitites<Cow>().Include(c => c.Farmer).ToListAsync();
 
-        public Task<Cow?> GetById(Guid id) {
-            throw new NotImplementedException();
-        }
+        public async Task<Cow> GetById(Guid id) => 
+            await _context.GetEntityById<Cow>(id);
 
-        public Task<Cow> Update(Cow entity) {
-            throw new NotImplementedException();
-        }
+        public async Task<Cow> Update(Cow entity)
+            => await _context.UpdateEntity(entity);
     }
 }
