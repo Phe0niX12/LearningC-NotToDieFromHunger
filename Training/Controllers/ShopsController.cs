@@ -6,26 +6,28 @@ namespace Training.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FarmersController(IService<Farmer> service): ControllerBase {
-        private IService<Farmer> _service = service;
-        [HttpGet(Name = "GetAllCows")]
-        public async Task<IEnumerable<Farmer?>> Get()
+    public class ShopsController(IService<Shops> service) : ControllerBase 
+    {
+        private IService<Shops> _service = service;
+
+        [HttpGet(Name = "GetAllShops")]
+        public async Task<IEnumerable<Shops?>> Get()
         {
             return await _service.GetAllTs();
         }
         [HttpPost]
-        public async Task<Farmer> Post([FromBody] Farmer farmer)
+        public async Task<Shops> Post([FromBody] Shops shops)
         {
-            return await _service.AddT(farmer);
+            return await _service.AddT(shops);
         }
 
         [HttpPut]
-        public async Task<Farmer> Put([FromBody] Farmer farmer)
+        public async Task<Shops> Put([FromBody] Shops shops)
         {
-            return await _service.UpdateT(farmer);
+            return await _service.UpdateT(shops);
         }
         [HttpGet("{id}", Name = "GetCowsByID")]
-        public async Task<Farmer?> Get(Guid id)
+        public async Task<Shops?> Get(Guid id)
         {
             return await _service.GetTById(id);
         }
@@ -34,6 +36,6 @@ namespace Training.Controllers
         {
             await _service.DeleteWithoutDeleting(id);
         }
+
     }
-    
 }

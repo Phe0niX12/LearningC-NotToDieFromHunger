@@ -7,6 +7,7 @@
 
         public string? address { get; set; }
 
-        public virtual ICollection<Cow> Cows { get; set; } = new List<Cow>();
+        public virtual ICollection<Cow>? Cows { get; set; } 
+        public virtual ICollection<Shops>? Shops { get; set; }
     }
 }

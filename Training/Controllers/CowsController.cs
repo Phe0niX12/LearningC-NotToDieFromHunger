@@ -8,7 +8,7 @@ namespace Training.Controllers {
     public class CowsController(IService<Cow> service) : ControllerBase {
         private IService<Cow> _service = service;
         [HttpGet(Name = "GetAllFarmers")]
-        public async Task<IEnumerable<Cow>> Get()
+        public async Task<IEnumerable<Cow?>> Get()
         {
             return await _service.GetAllTs();
         }

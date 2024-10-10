@@ -5,7 +5,9 @@ using Training.Model;
 namespace Training.Contexts {
     public interface IAppDBContext {
         DbSet<Cow> Cows { get; set; }
+        DbSet<Shops> Shops { get; set; }
         DbSet<Farmer> Farmers { get; set; }
+        DbSet<Traiding> Traidings { get; set; }
         IQueryable<T> AllSqlEntitites<T>() where T : BaseEntity;
         Task<T> AddEntity<T>(T entity) where T : BaseEntity;
         Task<T> UpdateEntity<T>(T entity) where T : BaseEntity;
@@ -15,7 +17,9 @@ namespace Training.Contexts {
     }
     public class AppDBContext(DbContextOptions<AppDBContext> options): DbContext(options),IAppDBContext {
         public DbSet<Cow> Cows { get; set; }
+        public DbSet<Shops> Shops { get; set; }
         public DbSet<Farmer> Farmers { get; set; }
+        public DbSet<Traiding> Traidings { get; set; }
 
         public IQueryable<T> AllSqlEntitites<T>() where T: BaseEntity =>Set<T>(); 
 

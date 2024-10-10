@@ -15,7 +15,7 @@ namespace Training.Service
         public async Task DeleteWithoutDeleting(Guid id)
             =>await _repository.DeleteWithoutDeleteing(id);
 
-        public async Task<IEnumerable<Farmer>> GetAllTs()
+        public async Task<IEnumerable<Farmer?>> GetAllTs()
             => await _repository.GetAll();
 
         public async Task<Farmer?> GetTById(Guid id)
