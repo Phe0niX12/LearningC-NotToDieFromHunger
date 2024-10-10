@@ -12,13 +12,13 @@ namespace Training.Service
         public async Task DeleteT(Farmer entity)
             =>await _repository.Delete(entity);
 
-        public async Task<Farmer> DeleteWithoutDeleting(Guid id)
+        public async Task DeleteWithoutDeleting(Guid id)
             =>await _repository.DeleteWithoutDeleteing(id);
 
         public async Task<IEnumerable<Farmer>> GetAllTs()
             => await _repository.GetAll();
 
-        public async Task<Farmer> GetTById(Guid id)
+        public async Task<Farmer?> GetTById(Guid id)
             => await _repository.GetById(id);
 
         public async Task<Farmer> UpdateT(Farmer entity)

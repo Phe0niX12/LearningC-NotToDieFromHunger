@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System.Reflection.Metadata.Ecma335;
 using Training.Model;
 namespace Training.Contexts {
     public interface IAppDBContext {
@@ -9,8 +10,8 @@ namespace Training.Contexts {
         Task<T> AddEntity<T>(T entity) where T : BaseEntity;
         Task<T> UpdateEntity<T>(T entity) where T : BaseEntity;
         Task<T> DeleteEntity<T>(Guid id) where T : BaseEntity;
-        Task<T> GetEntityById<T>(Guid id) where T : BaseEntity;
-        Task<T> DeleteWithoutDeleting<T>(Guid entityId) where T : BaseEntity;
+        Task<T?> GetEntityById<T>(Guid id) where T : BaseEntity;
+        Task DeleteWithoutDeleting<T>(Guid entityId) where T : BaseEntity;
     }
     public class AppDBContext(DbContextOptions<AppDBContext> options): DbContext(options),IAppDBContext {
         public DbSet<Cow> Cows { get; set; }
@@ -30,10 +31,10 @@ namespace Training.Contexts {
             return entity;
         }
 
-        public async Task<T> GetEntityById<T>(Guid id) where T : BaseEntity 
+        public async Task<T?> GetEntityById<T>(Guid id) where T : BaseEntity 
         {
             T? entity = await Set<T>().FindAsync(id);
-            return entity == null ? throw new InvalidOperationException("No entity to update") : entity;
+            return entity; 
         }
 
         public Task<T> DeleteEntity<T>(Guid id) where T : BaseEntity
@@ -41,16 +42,15 @@ namespace Training.Contexts {
             throw new NotImplementedException();
         }
 
-        public async Task<T> DeleteWithoutDeleting<T>(Guid entityId) where T : BaseEntity
+        public async Task DeleteWithoutDeleting<T>(Guid entityId) where T : BaseEntity
         {
             T? entity = await Set<T>().FindAsync(entityId);
-            if(null == entity)
+            if (entity == null)
             {
-                throw new InvalidOperationException("No such enitity to delete");
+                return;
             }
             entity.isDeleted = true;
             await SaveChangesAsync();
-            return entity;
             
         }
     }

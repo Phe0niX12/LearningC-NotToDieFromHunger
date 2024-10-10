@@ -23,14 +23,14 @@ namespace Training.Controllers {
             return await _service.UpdateT(cow);
         }
         [HttpGet("{id}", Name = "GetFarmersByID")]
-        public async Task<Cow> Get(Guid id)
+        public async Task<Cow?> Get(Guid id)
         {
             return await _service.GetTById(id);
         }
         [HttpPatch("delete/{id}")]
-        public async Task<Cow> Patch(Guid id)
+        public async Task Patch(Guid id)
         {
-            return await _service.DeleteWithoutDeleting(id);
+           await _service.DeleteWithoutDeleting(id);
         }
     }
 }

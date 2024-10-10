@@ -11,13 +11,13 @@ namespace Training.Service {
             throw new NotImplementedException();
         }
 
-        public async Task<Cow> DeleteWithoutDeleting(Guid id)
+        public async Task DeleteWithoutDeleting(Guid id)
             =>await _repo.DeleteWithoutDeleteing(id);
 
         public async Task<IEnumerable<Cow>> GetAllTs()
             => await _repo.GetAll();
 
-        public async Task<Cow> GetTById(Guid id) 
+        public async Task<Cow?> GetTById(Guid id) 
             => await _repo.GetById(id);
 
         public async Task<Cow> UpdateT(Cow entity) 

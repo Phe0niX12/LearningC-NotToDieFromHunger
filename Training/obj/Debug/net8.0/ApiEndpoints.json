@@ -115,12 +115,8 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Training.Model.Cow",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]
@@ -241,12 +237,8 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Training.Model.Farmer",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]
