@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Training.Contexts;
 
@@ -11,9 +12,11 @@ using Training.Contexts;
 namespace Training.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241009151844_New Table + 1 to many")]
+    partial class NewTable1tomany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,15 +84,10 @@ namespace Training.Migrations
             modelBuilder.Entity("Training.Model.Cow", b =>
                 {
                     b.HasOne("Training.Model.Farmer", "Farmer")
-                        .WithMany("Cows")
+                        .WithMany()
                         .HasForeignKey("FarmerId");
 
                     b.Navigation("Farmer");
-                });
-
-            modelBuilder.Entity("Training.Model.Farmer", b =>
-                {
-                    b.Navigation("Cows");
                 });
 #pragma warning restore 612, 618
         }

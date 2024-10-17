@@ -15,8 +15,13 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer("Ser
 
 builder.Services.AddTransient<IAppDBContext, AppDBContext>();
 
+builder.Services.AddScoped<IRepository<Farmer>, FarmerRepository>();
+builder.Services.AddScoped < IService<Farmer>, FarmerService>();
 builder.Services.AddScoped<IRepository<Cow>, CowRepository>();
 builder.Services.AddScoped<IService<Cow>, CowService>();
+
+builder.Services.AddScoped<IRepository<Shops>, ShopRepository>();
+builder.Services.AddScoped<IService<Shops>, ShopService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

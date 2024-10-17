@@ -17,7 +17,8 @@
         ],
         "StatusCode": 200
       }
-    ]
+    ],
+    "EndpointName": "GetAllFarmers"
   },
   {
     "ContainingType": "Training.Controllers.CowsController",
@@ -46,16 +47,48 @@
     ]
   },
   {
-    "ContainingType": "Training.Controllers.WeatherForecastController",
+    "ContainingType": "Training.Controllers.CowsController",
+    "Method": "Put",
+    "RelativePath": "Cows",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cow",
+        "Type": "Training.Model.Cow",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Training.Model.Cow",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Training.Controllers.CowsController",
     "Method": "Get",
-    "RelativePath": "WeatherForecast",
+    "RelativePath": "Cows/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Training.WeatherForecast, Training, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Training.Model.Cow",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -64,6 +97,150 @@
         "StatusCode": 200
       }
     ],
-    "EndpointName": "GetWeatherForecast"
+    "EndpointName": "GetFarmersByID"
+  },
+  {
+    "ContainingType": "Training.Controllers.CowsController",
+    "Method": "Patch",
+    "RelativePath": "Cows/delete/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Training.Controllers.FarmersController",
+    "Method": "Get",
+    "RelativePath": "Farmers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Training.Model.Farmer, Training, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetAllCows"
+  },
+  {
+    "ContainingType": "Training.Controllers.FarmersController",
+    "Method": "Post",
+    "RelativePath": "Farmers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "farmer",
+        "Type": "Training.Model.Farmer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Training.Model.Farmer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Training.Controllers.FarmersController",
+    "Method": "Put",
+    "RelativePath": "Farmers",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "farmer",
+        "Type": "Training.Model.Farmer",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Training.Model.Farmer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Training.Controllers.FarmersController",
+    "Method": "Get",
+    "RelativePath": "Farmers/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Training.Model.Farmer",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetCowsByID"
+  },
+  {
+    "ContainingType": "Training.Controllers.FarmersController",
+    "Method": "Patch",
+    "RelativePath": "Farmers/delete/{id}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

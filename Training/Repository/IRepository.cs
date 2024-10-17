@@ -6,5 +6,6 @@ public interface IRepository<T> where T: class {
     Task Delete(T entity);
     Task<T?> GetById(Guid id);
     Task<IEnumerable<T>> GetAll();
+    Task DeleteWithoutDeleteing(Guid id);
 }
 
