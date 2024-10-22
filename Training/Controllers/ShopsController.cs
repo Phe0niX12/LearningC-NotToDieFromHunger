@@ -26,7 +26,7 @@ namespace Training.Controllers
         {
             return await _service.UpdateT(shops);
         }
-        [HttpGet("{id}", Name = "GetCowsByID")]
+        [HttpGet("{id}", Name = "GetShpopsByID")]
         public async Task<Shops?> Get(Guid id)
         {
             return await _service.GetTById(id);

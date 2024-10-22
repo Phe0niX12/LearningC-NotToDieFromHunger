@@ -6,7 +6,7 @@
         public string? Color { get; set; }
         public string? Description { get; set; }
 
-        public virtual Shops? Farmer { get; set; }
+        public virtual Farmer? Farmer { get; set; }
 
         
     }

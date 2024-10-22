@@ -7,10 +7,10 @@ namespace Training.Repository
     public class FarmerRepository(IAppDBContext appDBContext) : IRepository<Farmer>
     {
         private IAppDBContext _appDBContext = appDBContext;
-        public async Task<Farmer> Add(Fa entity)
+        public async Task<Farmer> Add(Farmer entity)
             => await _appDBContext.AddEntity(entity);
 
-        public Farmer Delete(Farmer entity)
+        public Task Delete(Farmer entity)
         {
             throw new NotImplementedException();
         }
@@ -26,5 +26,7 @@ namespace Training.Repository
 
         public async Task<Farmer> Update(Farmer entity)
             => await _appDBContext.UpdateEntity(entity);
+
+
     }
 }

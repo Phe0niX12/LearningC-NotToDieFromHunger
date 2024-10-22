@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Training.Contexts;
 
@@ -11,9 +12,11 @@ using Training.Contexts;
 namespace Training.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241010175329_S")]
+    partial class S
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,6 +43,9 @@ namespace Training.Migrations
                     b.Property<Guid?>("FarmerId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("FarmerId1")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -50,6 +56,8 @@ namespace Training.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FarmerId");
+
+                    b.HasIndex("FarmerId1");
 
                     b.ToTable("Cows");
                 });
@@ -136,9 +144,13 @@ namespace Training.Migrations
 
             modelBuilder.Entity("Training.Model.Cow", b =>
                 {
-                    b.HasOne("Training.Model.Farmer", "Farmer")
+                    b.HasOne("Training.Model.Farmer", null)
                         .WithMany("Cows")
                         .HasForeignKey("FarmerId");
+
+                    b.HasOne("Training.Model.Shops", "Farmer")
+                        .WithMany()
+                        .HasForeignKey("FarmerId1");
 
                     b.Navigation("Farmer");
                 });
