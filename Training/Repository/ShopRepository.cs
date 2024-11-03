@@ -18,10 +18,10 @@ namespace Training.Repository
         public async Task DeleteWithoutDeleteing(Guid id)
             =>await _appDBContext.DeleteWithoutDeleting<Shops>(id);
 
-        public async Task<IEnumerable<Shops>> GetAll()
+        public async Task<List<Shops>> GetAll()
             =>await _appDBContext.AllSqlEntitites<Shops>().ToListAsync();
 
-        public async Task<Shops?> GetById(Guid id)
+        public async Task<Shops> GetById(Guid id)
             =>await _appDBContext.GetEntityById<Shops>(id); 
 
         public async Task<Shops> Update(Shops entity)

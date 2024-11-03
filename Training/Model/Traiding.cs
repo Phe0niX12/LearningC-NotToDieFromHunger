@@ -5,5 +5,7 @@
         public virtual Farmer? Farmer { get; set; }
         public virtual Shops? Shops { get; set; }
 
+        public String? Details { get; set; }
+
     }
 }

@@ -16,8 +16,8 @@ namespace Training.Repository {
         public async Task DeleteWithoutDeleteing(Guid id)
             => await _context.DeleteWithoutDeleting<Cow>(id);
 
-        public async Task<IEnumerable<Cow>> GetAll()
-            => await _context.AllSqlEntitites<Cow>().Include(c => c.Farmer).ToListAsync();
+        public async Task<List<Cow>> GetAll()
+            => await _context.AllSqlEntitites<Cow>().ToListAsync();
 
         public async Task<Cow?> GetById(Guid id) => 
             await _context.GetEntityById<Cow>(id);

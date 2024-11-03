@@ -16,7 +16,7 @@ namespace Training.Service
         public async Task DeleteWithoutDeleting(Guid id)
             =>await repository.DeleteWithoutDeleteing(id);
 
-        public async Task<IEnumerable<Shops?>> GetAllTs()
+        public async Task<List<Shops>> GetAllTs()
             =>await repository.GetAll();
 
         public async Task<Shops?> GetTById(Guid id)

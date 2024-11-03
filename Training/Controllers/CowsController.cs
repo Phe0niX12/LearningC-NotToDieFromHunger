@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Training.DOTs.CowsDTOs;
+using Training.Mapper;
 using Training.Model;
 using Training.Service;
 
@@ -8,9 +10,11 @@ namespace Training.Controllers {
     public class CowsController(IService<Cow> service) : ControllerBase {
         private IService<Cow> _service = service;
         [HttpGet(Name = "GetAllFarmers")]
-        public async Task<IEnumerable<Cow?>> Get()
+        public async Task<IEnumerable<CowDTO>> Get()
         {
-            return await _service.GetAllTs();
+            IEnumerable<Cow> cows = await _service.GetAllTs();
+            IEnumerable<CowDTO> cowDTOs = cows.ToList().Select(e => e?.toCowDTO());
+            return cowDTOs;
         }
         [HttpPost]
         public async Task<Cow> Post([FromBody] Cow cow) {
