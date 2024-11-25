@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Training.Contexts;
 
@@ -11,9 +12,11 @@ using Training.Contexts;
 namespace Training.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20241009164600_d")]
+    partial class d
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -78,62 +81,6 @@ namespace Training.Migrations
                     b.ToTable("Farmers");
                 });
 
-            modelBuilder.Entity("Training.Model.Shops", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("FarmerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int?>("customersPerYear")
-                        .HasColumnType("int");
-
-                    b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("managerName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FarmerId");
-
-                    b.ToTable("Shops");
-                });
-
-            modelBuilder.Entity("Training.Model.Traiding", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("FarmerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ShopsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("isDeleted")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FarmerId");
-
-                    b.HasIndex("ShopsId");
-
-                    b.ToTable("Traidings");
-                });
-
             modelBuilder.Entity("Training.Model.Cow", b =>
                 {
                     b.HasOne("Training.Model.Farmer", "Farmer")
@@ -143,38 +90,9 @@ namespace Training.Migrations
                     b.Navigation("Farmer");
                 });
 
-            modelBuilder.Entity("Training.Model.Shops", b =>
-                {
-                    b.HasOne("Training.Model.Farmer", null)
-                        .WithMany("Shops")
-                        .HasForeignKey("FarmerId");
-                });
-
-            modelBuilder.Entity("Training.Model.Traiding", b =>
-                {
-                    b.HasOne("Training.Model.Farmer", "Farmer")
-                        .WithMany()
-                        .HasForeignKey("FarmerId");
-
-                    b.HasOne("Training.Model.Shops", "Shops")
-                        .WithMany("Traidings")
-                        .HasForeignKey("ShopsId");
-
-                    b.Navigation("Farmer");
-
-                    b.Navigation("Shops");
-                });
-
             modelBuilder.Entity("Training.Model.Farmer", b =>
                 {
                     b.Navigation("Cows");
-
-                    b.Navigation("Shops");
-                });
-
-            modelBuilder.Entity("Training.Model.Shops", b =>
-                {
-                    b.Navigation("Traidings");
                 });
 #pragma warning restore 612, 618
         }

@@ -286,3 +286,4 @@ D:\Training\Training\obj\Debug\net8.0\refint\Training.dll
 D:\Training\Training\obj\Debug\net8.0\Training.pdb
 D:\Training\Training\obj\Debug\net8.0\Training.genruntimeconfig.cache
 D:\Training\Training\obj\Debug\net8.0\ref\Training.dll
+D:\Training\Training\obj\Debug\net8.0\Training.sourcelink.json
